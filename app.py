@@ -1,8 +1,17 @@
 import argparse
+import os
+
+from repo.pull import clone_repository
+from repo.dirs import create_dir_for_cloned_repo
+from filestat.stat import get_top_verbs_in_path
+
+BASE_DIR = os.getcwd()
 
 
 def parse(args):
-    pass
+    path_to_clone = create_dir_for_cloned_repo(BASE_DIR)
+    clone_repository(args.r, path_to_clone)
+    print(get_top_verbs_in_path(path_to_clone))
 
 
 if __name__ == '__main__':
