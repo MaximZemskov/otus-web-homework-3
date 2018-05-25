@@ -1,0 +1,15 @@
+.idea
+otus_1/*
+venv
+.cache
+.env
+.pytest_cache
+.benchmarks
+.coverage
+*.py[cod]
+*.log
+
+__data__/*
+_project_/settings_local.py
+_project_/static/bower_components
+
