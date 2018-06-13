@@ -8,11 +8,19 @@ from filestat.stat import get_top_verbs_in_path
 BASE_DIR = os.getcwd()
 
 
-def parse(args):
+def init_path(arguments):
     path_to_clone = create_dir_for_cloned_repo(BASE_DIR)
-    clone_repository(args.r, path_to_clone)
-    print(get_top_verbs_in_path(path_to_clone))
-    delete_dir(path_to_clone)
+    clone_repository(arguments.r, path_to_clone)
+    return path_to_clone
+
+
+def destruction(path):
+    delete_dir(path)
+
+
+def main(arguments):
+    path = init_path(arguments)
+    print(get_top_verbs_in_path(path))
 
 
 if __name__ == '__main__':
@@ -28,6 +36,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print(args)
     if args.r:
-        parse(args)
+        main(args)
     else:
         print('No git repository passed.')
